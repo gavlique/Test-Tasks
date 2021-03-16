@@ -8,8 +8,10 @@ WHERE EXISTS(SELECT ordernumber.table2
 			 WHERE ordernumber.table2 = ordernumber.table1);
 /* 2. Воспользуемся оконными функциями*/
 SELECT ordernumber,
-	LAST_VALUE(packagename) OVER(PARTITION BY ordernumber ORDER BY moment) AS chosenpackage
+	LAST_VALUE(packagename) OVER(PARTITION BY ordernumber ORDER BY moment
+                          ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+                          ) AS chosenpackage
 FROM (SELECT * FROM table1
 	 UNION
 	 SELECT * FROM table2)
-GROUP BY ordernumber, chosenpackage
+GROUP BY ordernumber, packagename, moment

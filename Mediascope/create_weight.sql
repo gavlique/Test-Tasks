@@ -1,8 +1,8 @@
 CREATE TABLE weight(
 resp int,
 dt date,
-weight real);
+weight float(10));
 COPY weight
-FROM 'd:\coding\weight.csv' 
-DELIMITER ';' 
+FROM 'd:\coding\test tasks\mediascope\weight.csv' 
+DELIMITER ',' 
 CSV HEADER;

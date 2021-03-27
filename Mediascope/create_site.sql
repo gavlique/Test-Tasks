@@ -3,9 +3,8 @@ site	varchar,
 dt	date,
 resp int,
 dur int,
-hit int,
-weight real);
+hit int);
 COPY site
-FROM 'd:\coding\site.csv' 
+FROM 'd:\coding\test tasks\mediascope\site.csv' 
 DELIMITER ';' 
 CSV HEADER;
